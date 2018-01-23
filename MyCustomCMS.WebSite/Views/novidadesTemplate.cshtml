@@ -1,0 +1,49 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NovidadesType>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "MasterTemplate.cshtml";
+}   
+
+
+@{
+
+    var selection = Model.Content.Site().FirstChild("novidadesType").Children("novidadeType")
+                        .Where(x => x.IsVisible())
+                        .Select(x => x as ContentModels.NovidadeType)
+                        .OrderByDescending(x => x.CreateDate);
+
+}
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>@Umbraco.Field("titulo")</h1>
+        <p class="lead">@Umbraco.Field("descricao")</p>
+    </div>
+
+    <div class="row">
+        @foreach (Umbraco.Web.PublishedContentModels.NovidadeType item in selection)
+        {
+
+            <div class="col-sm-12 blog-main">
+
+                <div class="blog-post">
+                    <h2 class="blog-post-title"><a href="@item.Url">@item.Name</a></h2>
+                    <p class="blog-post-meta">@item.CreateDate.ToLongDateString() por @item.CreatorName</p>
+                    <p>@item.Resumo</p>
+                    <p class="blog-post-meta">
+                        @item.Categoria
+                    
+                        @foreach(var tag in @item.Tags)
+                        {
+                            <span class="label label-default">@tag</span>
+                        }
+                    </p>
+                </div><!-- /.blog-post -->
+
+            </div><!-- /.blog-sidebar -->
+
+        }
+    </div>
+
+</div>

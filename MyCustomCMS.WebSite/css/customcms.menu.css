@@ -1,0 +1,33 @@
+﻿.mycms-navbar {
+}
+
+.mycms-navbar-light {
+	background-color: transparent;
+}
+
+	.mycms-navbar-light .navbar-brand {
+		color: #ffffff;
+	}
+
+		.mycms-navbar-light .navbar-brand:hover,
+		.mycms-navbar-light .navbar-brand:focus {
+			color: #ffffff;
+			background-color: transparent;
+		}
+
+	.mycms-navbar-light .navbar-nav > li > a {
+		color: #eaeaea;
+	}
+
+	.mycms-navbar-light .navbar-nav > .active > a,
+	.mycms-navbar-light .navbar-nav > .active > a:hover,
+	.mycms-navbar-light .navbar-nav > .active > a:focus {
+		color: #ffffff;
+		background-color: transparent;
+	}
+
+	.mycms-navbar-light .navbar-nav > li > a:hover,
+	.mycms-navbar-light .navbar-nav > li > a:focus {
+		color: #ffffff;
+		background-color: transparent;
+	}

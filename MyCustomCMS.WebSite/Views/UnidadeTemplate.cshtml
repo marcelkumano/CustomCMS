@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.UnidadeType>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "MasterTemplate.cshtml";
+}
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>@Umbraco.Field("nomeUnidade")</h1>
+        <p class="lead">@Umbraco.Field("enderecoUnidade")</p>
+        <p class="lead">@Umbraco.Field("descricaoUnidade")</p>
+        <p class="lead">@Umbraco.Field("horarioFuncionamento")</p>
+    </div>
+    
+</div>

@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.SobreType>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "MasterTemplate.cshtml";
+}
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>@Umbraco.Field("titulo")</h1>
+        <p class="lead">@Umbraco.Field("descricao")</p>
+    </div>
+    
+</div>

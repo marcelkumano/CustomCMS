@@ -1,0 +1,143 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomeType>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "MasterTemplate.cshtml";
+}
+
+
+
+@* the fun starts here *@
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    @{
+        var activeIndicatorIndex = 0;
+        var selection = Model.Content.Site().Children("destaqueType")
+                            .Where(x => x.IsVisible());
+    }
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @for (int indicatorIndex = 0; indicatorIndex < selection.Count(); indicatorIndex++)
+        {
+            <li data-target="#myCarousel" data-slide-to="@indicatorIndex" class="@(indicatorIndex == activeIndicatorIndex ? "active" : string.Empty)"></li>
+        }
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        @for (int destaqueIndex = 0; destaqueIndex < selection.Count(); destaqueIndex++)
+        {
+            DestaqueType destaqueItem = selection.ToArray()[destaqueIndex] as DestaqueType;
+
+            <div class="item @(destaqueIndex == activeIndicatorIndex ? "active" : string.Empty)">
+                <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>@destaqueItem.TituloDestaque</h1>
+                        <p>@destaqueItem.DescricaoDestaque</p>
+                        <p><a class="btn btn-lg btn-primary" href="@destaqueItem.LinkAcaoDestaque" role="button">@destaqueItem.TextoAcaoDestaque</a></p>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div><!-- /.carousel -->
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+    <div class="row">
+        @{
+            var unidades = Model.Content.Site().FirstChild("unidadesType").Children("unidadeType")
+                                .Where(x => x.IsVisible())
+                                .Select(x => x as UnidadeType)
+                                .ToList();
+        }
+        @foreach (var item in unidades)
+        {
+            <div class="col-lg-4">
+                <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                <h2>@item.NomeUnidade</h2>
+                <p>@item.DescricaoUnidade</p>
+                <p><a class="btn btn-default" href="@item.Url" role="button">Ver mais</a></p>
+            </div><!-- /.col-lg-4 -->
+        }
+    </div><!-- /.row -->
+    <!-- START THE FEATURETTES -->
+</div><!-- /.container -->
+
+
+<div id="myCarouselProdutos" class="carousel slide" data-ride="carousel">
+    @{
+        var produtos = Model.Content.Site().FirstChild("produtosType").Children("produtoType")
+                        .Where(x => x.IsVisible())
+                        .Select(x => x as ProdutoType)
+                        .Where(x => x.ExibirHome)
+                        .ToList();
+    }
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @for (int indicatorIndex = 0; indicatorIndex < produtos.Count(); indicatorIndex++)
+        {
+            <li data-target="#myCarouselProdutos" data-slide-to="@indicatorIndex" class="@(indicatorIndex == activeIndicatorIndex ? "active" : string.Empty)"></li>
+        }
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        @for (int indicatorIndex = 0; indicatorIndex < produtos.Count(); indicatorIndex++)
+         {
+                ProdutoType produto = produtos[indicatorIndex] as ProdutoType;
+            <div class="item @(indicatorIndex == activeIndicatorIndex ? "active" : string.Empty)">
+                <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>@produto.Nome</h1>
+                        <p>@produto.Descricao</p>
+                        <p><a class="btn btn-lg btn-primary" href="@produto.Url" role="button">Ver mais</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a class="left carousel-control" href="#myCarouselProdutos" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarouselProdutos" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container marketing">
+    @{
+        var novidades = Model.Content.Site().FirstChild("novidadesType").Children("novidadeType")
+                            .Where(x => x.IsVisible())
+                            .Select(x => x as NovidadeType)
+                            .ToList();
+    }
+
+    @for (int indiceNovidade = 0; indiceNovidade < novidades.Count(); indiceNovidade++)
+    {
+        NovidadeType novidade = novidades[indiceNovidade];
+
+        <div class="row featurette">
+            <div class="col-md-7 @(indiceNovidade % 2 != 0 ? "col-md-push-5": string.Empty)">
+                <h2 class="featurette-heading">@novidade.Titulo</h2>
+                <p>@novidade.Resumo</p>
+            </div>
+            <div class="col-md-5 @(indiceNovidade % 2 != 0 ? "col-md-pull-7": string.Empty)">
+                <img class="featurette-image img-responsive center-block" src="http://via.placeholder.com/400x150" data-holder-rendered="true">
+            </div>
+        </div>
+    }
+</div>
+

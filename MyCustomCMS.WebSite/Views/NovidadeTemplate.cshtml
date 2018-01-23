@@ -1,0 +1,54 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NovidadeType>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+@{
+	Layout = "MasterTemplate.cshtml";
+}
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="container">
+
+
+            <div class="starter-template">
+
+                <div class="blog-post">
+                    <h2 class="blog-post-title">@Model.Content.Name</h2>
+                    <p class="blog-post-meta">@Model.Content.CreateDate.ToLongDateString() por @Model.Content.CreatorName</p>
+                    @Model.Content.Conteudo
+                    <p class="blog-post-meta">
+                        @Model.Content.Categoria
+                    
+                        @foreach(var tag in Model.Content.Tags)
+                        {
+                            <span class="label label-default">@tag</span>
+                        }
+                    </p>
+                </div><!-- /.blog-post -->
+
+                <div class="fb-comments" data-width=""></div>
+
+            </div><!-- /.blog-sidebar -->
+            
+            @{
+
+    string twitter = "https://twitter.com/intent/tweet?text=" + HttpUtility.UrlEncode(Model.Content.Name) + "&url=" + HttpUtility.UrlEncode(Model.Content.UrlWithDomain());
+
+    string facebook = "http://www.facebook.com/sharer.php?u=" + HttpUtility.UrlEncode(Model.Content.UrlWithDomain());
+
+}
+
+<div class="buttons">
+    <a class="button twitter" rel="nofollow" target="_blank" href="@twitter">Tweet!</a>
+    <a class="button facebook" rel="nofollow" target="_blank" href="@facebook">Share!</a>
+</div>
+            
+</div>
+

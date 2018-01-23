@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProdutosType>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "MasterTemplate.cshtml";
+}
+
+@* the fun starts here *@
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>@Umbraco.Field("titulo")</h1>
+        <p class="lead">@Umbraco.Field("descricao")</p>
+    </div>
+
+
+    @{
+        var selection = Model.Content.Site().FirstChild("produtosType").Children("produtoType")
+                            .Where(x => x.IsVisible());
+    }
+
+    <div class="row">
+        @foreach (Umbraco.Web.PublishedContentModels.ProdutoType item in selection)
+        {
+            <div class="col-md-4">
+                <h2>@item.Nome</h2>
+                <p>@item.Descricao</p>
+                <p><a class="btn btn-default" href="@item.Url" role="button">View details »</a></p>
+            </div>
+        }
+    </div>
+</div>
