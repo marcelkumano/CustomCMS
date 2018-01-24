@@ -19,7 +19,7 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "ff9a25fcc171286c")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "719bcb995208c915")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 namespace Umbraco.Web.PublishedContentModels
@@ -257,6 +257,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// FotoHome
+		///</summary>
+		[ImplementPropertyType("fotoHome")]
+		public IPublishedContent FotoHome
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("fotoHome"); }
+		}
+
+		///<summary>
 		/// Nome
 		///</summary>
 		[ImplementPropertyType("nome")]
@@ -307,6 +316,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string Descricao
 		{
 			get { return this.GetPropertyValue<string>("descricao"); }
+		}
+
+		///<summary>
+		/// ImagemPrincipal
+		///</summary>
+		[ImplementPropertyType("imagemPrincipal")]
+		public IPublishedContent ImagemPrincipal
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("imagemPrincipal"); }
 		}
 
 		///<summary>
@@ -390,6 +408,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// ImagemPrincipal
+		///</summary>
+		[ImplementPropertyType("imagemPrincipal")]
+		public IPublishedContent ImagemPrincipal
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("imagemPrincipal"); }
+		}
+
+		///<summary>
 		/// Titulo
 		///</summary>
 		[ImplementPropertyType("titulo")]
@@ -440,6 +467,24 @@ namespace Umbraco.Web.PublishedContentModels
 		public IHtmlString Conteudo
 		{
 			get { return this.GetPropertyValue<IHtmlString>("conteudo"); }
+		}
+
+		///<summary>
+		/// ImagemHome
+		///</summary>
+		[ImplementPropertyType("imagemHome")]
+		public IPublishedContent ImagemHome
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("imagemHome"); }
+		}
+
+		///<summary>
+		/// ImagemPrincipal
+		///</summary>
+		[ImplementPropertyType("imagemPrincipal")]
+		public IPublishedContent ImagemPrincipal
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("imagemPrincipal"); }
 		}
 
 		///<summary>
@@ -576,6 +621,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// ImagemPrincipal
+		///</summary>
+		[ImplementPropertyType("imagemPrincipal")]
+		public IPublishedContent ImagemPrincipal
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("imagemPrincipal"); }
+		}
+
+		///<summary>
 		/// Titulo
 		///</summary>
 		[ImplementPropertyType("titulo")]
@@ -665,12 +719,30 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// FotoPrincipal
+		///</summary>
+		[ImplementPropertyType("fotoPrincipal")]
+		public IPublishedContent FotoPrincipal
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("fotoPrincipal"); }
+		}
+
+		///<summary>
 		/// HorarioFuncionamento
 		///</summary>
 		[ImplementPropertyType("horarioFuncionamento")]
 		public string HorarioFuncionamento
 		{
 			get { return this.GetPropertyValue<string>("horarioFuncionamento"); }
+		}
+
+		///<summary>
+		/// MiniaturaLoja
+		///</summary>
+		[ImplementPropertyType("miniaturaLoja")]
+		public IPublishedContent MiniaturaLoja
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("miniaturaLoja"); }
 		}
 
 		///<summary>
@@ -715,6 +787,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string Descricao
 		{
 			get { return this.GetPropertyValue<string>("descricao"); }
+		}
+
+		///<summary>
+		/// ImagemPrincipal
+		///</summary>
+		[ImplementPropertyType("imagemPrincipal")]
+		public IPublishedContent ImagemPrincipal
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("imagemPrincipal"); }
 		}
 
 		///<summary>

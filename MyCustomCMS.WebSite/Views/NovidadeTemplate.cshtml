@@ -2,7 +2,9 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 
 @{
-	Layout = "MasterTemplate.cshtml";
+    Layout = "MasterTemplate.cshtml";
+    string twitter = "https://twitter.com/intent/tweet?text=" + HttpUtility.UrlEncode(Model.Content.Name) + "&url=" + HttpUtility.UrlEncode(Model.Content.UrlWithDomain());
+    string facebook = "http://www.facebook.com/sharer.php?u=" + HttpUtility.UrlEncode(Model.Content.UrlWithDomain());
 }
 <div id="fb-root"></div>
 <script>
@@ -14,41 +16,35 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="container">
 
+<div class="jumbotron" data-stellar-background-ratio="0.7" style="background-attachment: fixed; background-image: url(@Model.Content.ImagemPrincipal.Url); ">
+    <div class="container">
+        <h1>@Umbraco.Field("titulo")</h1>
+        <p>@Model.Content.CreateDate.ToLongDateString() por @Model.Content.CreatorName</p>
+        <p class="mycms-post-meta">
+            @Model.Content.Categoria
 
-            <div class="starter-template">
-
-                <div class="blog-post">
-                    <h2 class="blog-post-title">@Model.Content.Name</h2>
-                    <p class="blog-post-meta">@Model.Content.CreateDate.ToLongDateString() por @Model.Content.CreatorName</p>
-                    @Model.Content.Conteudo
-                    <p class="blog-post-meta">
-                        @Model.Content.Categoria
-                    
-                        @foreach(var tag in Model.Content.Tags)
-                        {
-                            <span class="label label-default">@tag</span>
-                        }
-                    </p>
-                </div><!-- /.blog-post -->
-
-                <div class="fb-comments" data-width=""></div>
-
-            </div><!-- /.blog-sidebar -->
-            
-            @{
-
-    string twitter = "https://twitter.com/intent/tweet?text=" + HttpUtility.UrlEncode(Model.Content.Name) + "&url=" + HttpUtility.UrlEncode(Model.Content.UrlWithDomain());
-
-    string facebook = "http://www.facebook.com/sharer.php?u=" + HttpUtility.UrlEncode(Model.Content.UrlWithDomain());
-
-}
-
-<div class="buttons">
-    <a class="button twitter" rel="nofollow" target="_blank" href="@twitter">Tweet!</a>
-    <a class="button facebook" rel="nofollow" target="_blank" href="@facebook">Share!</a>
+            @foreach (var tag in Model.Content.Tags)
+            {
+                <span class="label label-default">@tag</span>
+            }
+        </p>
+    </div>
 </div>
+
+<div class="container">
+    <div class="mycms-post" style="padding-bottom: 60px">
+        @Model.Content.Conteudo
+
+        <div class="mycms-social-buttons">
+            <a class="fab fa-facebook-square" rel="nofollow" target="_blank" href="@facebook"></a>
+            <a class="fab fa-twitter-square" rel="nofollow" target="_blank" href="@twitter"></a>
+        </div>
+    </div><!-- /.blog-post -->
+
+    <div class="fb-comments" data-width="100%"></div>
+            
+
             
 </div>
 

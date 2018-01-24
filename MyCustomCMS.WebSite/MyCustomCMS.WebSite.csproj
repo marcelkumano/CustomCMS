@@ -248,8 +248,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\customcms.carousel.css" />
+    <Content Include="css\customcms.novidades.css" />
+    <Content Include="css\customcms.produtos.css" />
+    <Content Include="css\customcms.unidades.css" />
     <Content Include="css\lib\bootstrap.css" />
     <Content Include="css\lib\bootstrap.min.css" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\lib\fontawesome-all.css" />
+    <Content Include="css\webfonts\fa-brands-400.svg" />
+    <Content Include="css\webfonts\fa-regular-400.svg" />
+    <Content Include="css\webfonts\fa-solid-900.svg" />
+    <Content Include="scripts\lib\jquery.stellar.js" />
     <Content Include="packages.config" />
     <Content Include="scripts\lib\bootstrap.min.js" />
     <Content Include="scripts\lib\jquery.min.js" />
@@ -275,6 +285,23 @@
     <Content Include="Views\SobreType.cshtml" />
     <Content Include="Views\UnidadeTemplate.cshtml" />
     <Content Include="css\customcms.menu.css" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="scripts\customcms.home.js" />
+    <Content Include="css\webfonts\fa-brands-400.eot" />
+    <Content Include="css\webfonts\fa-brands-400.ttf" />
+    <Content Include="css\webfonts\fa-brands-400.woff" />
+    <Content Include="css\webfonts\fa-brands-400.woff2" />
+    <Content Include="css\webfonts\fa-regular-400.eot" />
+    <Content Include="css\webfonts\fa-regular-400.ttf" />
+    <Content Include="css\webfonts\fa-regular-400.woff" />
+    <Content Include="css\webfonts\fa-regular-400.woff2" />
+    <Content Include="css\webfonts\fa-solid-900.eot" />
+    <Content Include="css\webfonts\fa-solid-900.ttf" />
+    <Content Include="css\webfonts\fa-solid-900.woff" />
+    <Content Include="css\webfonts\fa-solid-900.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

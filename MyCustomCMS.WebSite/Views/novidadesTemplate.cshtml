@@ -14,24 +14,26 @@
 
 }
 
-<div class="container">
-
-    <div class="starter-template">
+<div class="jumbotron" data-stellar-background-ratio="0.7" style="background-attachment: fixed; background-image: url(@Model.Content.ImagemPrincipal.Url); ">
+    <div class="container">
         <h1>@Umbraco.Field("titulo")</h1>
-        <p class="lead">@Umbraco.Field("descricao")</p>
+        <p>@Umbraco.Field("descricao")</p>
     </div>
+</div>
+
+<div class="container">
 
     <div class="row">
         @foreach (Umbraco.Web.PublishedContentModels.NovidadeType item in selection)
         {
 
-            <div class="col-sm-12 blog-main">
+            <div class="col-sm-12">
 
-                <div class="blog-post">
-                    <h2 class="blog-post-title"><a href="@item.Url">@item.Name</a></h2>
-                    <p class="blog-post-meta">@item.CreateDate.ToLongDateString() por @item.CreatorName</p>
+                <div class="mycms-post">
+                    <h2 class="mycms-post-title"><a href="@item.Url">@item.Name</a></h2>
+                    <p class="mycms-post-meta">@item.CreateDate.ToLongDateString() por @item.CreatorName</p>
                     <p>@item.Resumo</p>
-                    <p class="blog-post-meta">
+                    <p class="mycms-post-meta">
                         @item.Categoria
                     
                         @foreach(var tag in @item.Tags)

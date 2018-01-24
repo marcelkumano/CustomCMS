@@ -4,12 +4,12 @@
 	Layout = "MasterTemplate.cshtml";
 }
 
-<div class="container">
-
-    <div class="starter-template">
+<div class="jumbotron" data-stellar-background-ratio="0.7" style="background-attachment: fixed; background-image: url(@Model.Content.FotoHome.Url)">
+    <div class="container">
         <h1>@Umbraco.Field("nome")</h1>
-        <p class="lead">@Umbraco.Field("categoria")</p>
-        <p class="lead">@Umbraco.Field("descricao")</p>
+        <h2>@Umbraco.Field("categoria")</h2>
     </div>
-    
+</div>
+<div class="container">
+    <p class="lead">@Umbraco.Field("descricao")</p>
 </div>

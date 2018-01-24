@@ -6,26 +6,27 @@
 
 @* the fun starts here *@
 
-<div class="container">
-
-    <div class="starter-template">
+<div class="jumbotron" data-stellar-background-ratio="0.7" style="background-attachment: fixed; background-image: url(@Model.Content.ImagemPrincipal.Url); ">
+    <div class="container">
         <h1>@Umbraco.Field("titulo")</h1>
-        <p class="lead">@Umbraco.Field("descricao")</p>
+        <p>@Umbraco.Field("descricao")</p>
     </div>
+</div>
 
+<div class="container">
 
     @{
         var selection = Model.Content.Site().FirstChild("unidadesType").Children("unidadeType")
                             .Where(x => x.IsVisible());
     }
 
-    <div class="row">
+    <div class="row mycms-produtos">
         @foreach (UnidadeType item in selection)
         {
-            <div class="col-md-4">
-                <h2>@item.NomeUnidade</h2>
+            <div class="col-md-4 mycms-produto">
+                <h2 class="mycms-titulo">@item.NomeUnidade</h2>
                 <p>@item.DescricaoUnidade</p>
-                <p><a class="btn btn-default" href="@item.Url" role="button">View details »</a></p>
+                <p class="mycms-link"><a class="glyphicon glyphicon-plus-sign" href="@item.Url"></a></p>
             </div>
         }
     </div>

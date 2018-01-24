@@ -1,0 +1,19 @@
+﻿
+.mycms-produto {
+    text-align: center;
+}
+
+    .mycms-produto .mycms-titulo {
+        color: black;
+        font-size: 20px;
+    }
+
+    .mycms-produto .mycms-link a {
+        color: black;
+        font-size: 30px;
+    }
+
+        .mycms-produto .mycms-link a:hover {
+            text-decoration: none;
+            color: #808080;
+        }

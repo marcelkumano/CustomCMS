@@ -28,13 +28,12 @@
         {
             DestaqueType destaqueItem = selection.ToArray()[destaqueIndex] as DestaqueType;
 
-            <div class="item @(destaqueIndex == activeIndicatorIndex ? "active" : string.Empty)">
-                <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            <div class="item @(destaqueIndex == activeIndicatorIndex ? "active" : string.Empty)"  data-stellar-background-ratio="0.7" style="background-attachment: fixed; background-image: url(@destaqueItem.DestaqueImage.Url)">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>@destaqueItem.TituloDestaque</h1>
                         <p>@destaqueItem.DescricaoDestaque</p>
-                        <p><a class="btn btn-lg btn-primary" href="@destaqueItem.LinkAcaoDestaque" role="button">@destaqueItem.TextoAcaoDestaque</a></p>
+                        <p><a class="btn btn-md mycms-carousel" href="@destaqueItem.LinkAcaoDestaque" role="button">@destaqueItem.TextoAcaoDestaque</a></p>
                     </div>
                 </div>
             </div>
@@ -54,7 +53,7 @@
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="container marketing">
+<div class="container unidades">
     <div class="row">
         @{
             var unidades = Model.Content.Site().FirstChild("unidadesType").Children("unidadeType")
@@ -64,11 +63,11 @@
         }
         @foreach (var item in unidades)
         {
-            <div class="col-lg-4">
-                <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h2>@item.NomeUnidade</h2>
-                <p>@item.DescricaoUnidade</p>
-                <p><a class="btn btn-default" href="@item.Url" role="button">Ver mais</a></p>
+            <div class="col-lg-4 unidade">
+                <img class="img-circle" src="@item.MiniaturaLoja.Url" alt="Generic placeholder image" width="110" height="110">
+                <h2 class="titulo">@item.NomeUnidade</h2>
+                <p class="texto">@item.EnderecoUnidade</p>
+                <p class="link"><a class="glyphicon glyphicon-plus-sign" href="@item.Url" role="button"></a></p>
             </div><!-- /.col-lg-4 -->
         }
     </div><!-- /.row -->
@@ -94,14 +93,14 @@
     <div class="carousel-inner" role="listbox">
         @for (int indicatorIndex = 0; indicatorIndex < produtos.Count(); indicatorIndex++)
          {
-                ProdutoType produto = produtos[indicatorIndex] as ProdutoType;
-            <div class="item @(indicatorIndex == activeIndicatorIndex ? "active" : string.Empty)">
-                <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            ProdutoType produto = produtos[indicatorIndex] as ProdutoType;
+            <div class="item @(indicatorIndex == activeIndicatorIndex ? "active" : string.Empty)" style="background-attachment: fixed ;background-image: url(@produto.FotoHome.Url)"
+                  data-stellar-vertical-offset="50" data-stellar-background-ratio="0" >
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>@produto.Nome</h1>
                         <p>@produto.Descricao</p>
-                        <p><a class="btn btn-lg btn-primary" href="@produto.Url" role="button">Ver mais</a></p>
+                        <p><a class="btn btn-md mycms-carousel" href="@produto.Url" role="button">Ver mais</a></p>
                     </div>
                 </div>
             </div>
@@ -117,7 +116,7 @@
     </a>
 </div>
 
-<div class="container marketing">
+<div class="container novidades">
     @{
         var novidades = Model.Content.Site().FirstChild("novidadesType").Children("novidadeType")
                             .Where(x => x.IsVisible())
@@ -129,13 +128,13 @@
     {
         NovidadeType novidade = novidades[indiceNovidade];
 
-        <div class="row featurette">
+        <div class="row">
             <div class="col-md-7 @(indiceNovidade % 2 != 0 ? "col-md-push-5": string.Empty)">
-                <h2 class="featurette-heading">@novidade.Titulo</h2>
+                <h2 class="titulo"><a href="@novidade.Url">@novidade.Titulo</a></h2>
                 <p>@novidade.Resumo</p>
             </div>
             <div class="col-md-5 @(indiceNovidade % 2 != 0 ? "col-md-pull-7": string.Empty)">
-                <img class="featurette-image img-responsive center-block" src="http://via.placeholder.com/400x150" data-holder-rendered="true">
+                <img class="img-responsive center-block" src="@novidade.ImagemHome.Url" data-holder-rendered="true">
             </div>
         </div>
     }

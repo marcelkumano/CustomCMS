@@ -1,0 +1,36 @@
+﻿.novidades {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+
+    .novidades .titulo a {
+        font-size: 20px;
+        color: black;
+    }
+
+        .novidades .titulo a:hover {
+            text-decoration: none;
+        }
+
+
+.mycms-post-title a {
+    color: black;
+}
+
+    .mycms-post-title a:hover {
+        text-decoration: none;
+    }
+
+.mycms-post-meta {
+    font-size: 12px;
+    color: #808080;
+}
+
+.mycms-social-buttons {
+    font-size: 25px;
+}
+
+.mycms-social-buttons a:hover {
+    text-decoration: none;
+}

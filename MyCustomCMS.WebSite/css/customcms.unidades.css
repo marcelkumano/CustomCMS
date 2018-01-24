@@ -1,0 +1,27 @@
+﻿.unidades {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+
+.unidades .unidade {
+    text-align: center;
+}
+
+    .unidades .unidade .titulo {
+        color: black;
+        font-size: 20px;
+    }
+
+    .unidades .unidade .texto {
+    }
+
+    .unidades .unidade .link a {
+        color: black;
+        font-size: 30px;
+    }
+
+    .unidades .unidade .link a:hover {
+        text-decoration: none;
+        color: #808080;
+    }
